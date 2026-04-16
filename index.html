@@ -257,6 +257,46 @@ header p  { font-size: .7rem; color: var(--text-dim); margin-top: 2px; font-fami
   font-family:var(--mono); text-align:center;
   margin-top:4px;
 }
+.side-box {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+}
+.sim-box {
+  background: #062e1a; /* verde mais fechado */
+  border: 1.5px solid #14532d;
+  color: #bbf7d0;
+  box-shadow: 0 0 12px rgba(34,197,94,0.15);
+}
+
+.sim-box .sub {
+  color: #86efac;
+}
+
+.arrow-between {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 10px;
+  color: #86efac;
+  font-family: var(--mono);
+  white-space: nowrap;
+}
+
+.arrow-line {
+  width: 20px;
+  height: 1.5px;
+  background: #14532d;
+}
+
+.arrow-head {
+  width: 0;
+  height: 0;
+  border-left: 6px solid #14532d;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+}
  
 /* ── PILL (status badge inline) ── */
 .pill {
@@ -321,7 +361,7 @@ header p  { font-size: .7rem; color: var(--text-dim); margin-top: 2px; font-fami
  
 <div class="trigger nd" data-k="2_setup" onclick="S('2_setup')" style="width:300px; opacity:0.85">
   <span class="ico">⚙️</span>
-  <div>AUTOMAÇÃO DE VALIDAÇÃO (ROBÔ)
+  <div>Automação de Validação (ROBÔ)
     <div class="flist" style="margin-top:6px">
       <div class="fi">Definir regras (e-mail, telefone, etc.)</div>
       <div class="fi">Integração base SAP e base de e-mail</div>
@@ -363,17 +403,17 @@ header p  { font-size: .7rem; color: var(--text-dim); margin-top: 2px; font-fami
     <span class="ico">⚠️</span>
     <div>Dado incorreto identificado
       <div class="flist">
-        <div class="fi">✉️ E-mail — sem @ / sem domínio / vazio</div>
-        <div class="fi">📞 Telefone — &lt;10 ou &gt;11 dígitos / vazio / sem DDD</div>
-        <div class="fi">💬 WhatsApp — &lt;10 ou &gt;11 dígitos / vazio</div>
+        <div class="fi">✉️ E-mail</div>
+        <div class="fi">📞 Telefone</div>
+        <div class="fi">💬 WhatsApp</div>
       </div>
     </div>
   </div>
   <div class="vline"></div><div class="vtip"></div>
  
-  <div class="nd action co" data-k="2_dtriage_fields" onclick="S('2_dtriage_fields')" style="width:300px">
+  <div class="nd action co" data-k="2_dtriage_fields1" onclick="S('2_dtriage_fields1')" style="width:300px">
     <span class="ico"> 📤 </span>
-    <div>SAÍDA DO ROBÔ
+    <div>Saída Robô
       <div class="flist">
         <div class="fi">📊Atualiza status na base</div>
         <div class="fi">📋Gera lista para consultores</div>
@@ -387,8 +427,11 @@ header p  { font-size: .7rem; color: var(--text-dim); margin-top: 2px; font-fami
   <div class="vline s"></div>
   <div class="nd action cc" data-k="2_notif" onclick="S('2_notif')" style="width:300px">
     <span class="ico">📣</span>
-    <div>Aciona correção do Time de Vendas<div class="sub"> Realizar a cobrança com base consolidada de e-mails com falha, devolvidos e spam, junto à base de contatos do SAP, para que o consultor valide os dados de e-mail e telefone com o cliente</div></div>
+    <div>Aciona correção do Time de Vendas</div>
+ 
   </div>
+
+  
   <div class="vline"></div><div class="vtip"></div>
  
   <!-- DECISÃO: CORRIGIU? -->
@@ -408,10 +451,34 @@ header p  { font-size: .7rem; color: var(--text-dim); margin-top: 2px; font-fami
       <div class="retry nd" data-k="2_retry" onclick="S('2_retry')"><span>🔁</span><span>Nova cobrança ao consultor</span></div>
     </div>
     <div class="bcenter"><div class="bc-v"></div><div class="bc-h"></div></div>
-    <div class="bcol">
-      <div class="vline s"></div><div class="blabel n">SIM ✓</div><div class="vline s"></div>
-      <div class="nopass">Atualização Massiva de Dados no SAP ↓</div>
+<div class="bcol">
+  <div class="vline s"></div>
+  <div class="blabel n">SIM ✓</div>
+  <div class="vline s"></div>
+
+  <div class="side-box">
+    <div class="nd action cg" style="width:140px">
+      <span class="ico">🤖</span>
+      <div>Automação 
+        <div class="sub">Atualização massiva via robô</div>
+      </div>
     </div>
+ <!-- SETA COM TEXTO -->
+  <div class="arrow-between">
+    <span>Caso não funcione</span>
+    <div class="arrow-line"></div>
+    <div class="arrow-head"></div>
+  </div>
+
+    <div class="nd action cg" style="width:140px">
+      <span class="ico">👩‍💻</span>
+      <div>Tratativa manual
+        <div class="sub">Dividido entre o time de cadastro</div>
+      </div>
+    </div>
+  </div>
+    </div>
+
   </div>
  
   <div class="vline t"></div><div class="vtip"></div>
@@ -428,7 +495,7 @@ header p  { font-size: .7rem; color: var(--text-dim); margin-top: 2px; font-fami
   </div>
   <div class="vline"></div><div class="vtip"></div>
  
-   <div class="success nd" data-k="2_mo" onclick="S('2_ok')">
+   <div class="success nd" data-k="2_mo" onclick="S('2_mo')">
     <span style="font-size:18px">⚠️</span>
     <div><div style="font-weight:600">Monitorar cadastro</div><div style="font-size:.67rem;color:var(--text-dim);margin-top:2px">Acompanhar e garantir a correção dos cadastros incorretos</div></div>
   </div>
@@ -450,8 +517,10 @@ const D = {
   "2_start":  ["🟣 Início – Dados Já Existentes","Fluxo acionado quando um dado de contato de um Lead ou cliente já cadastrado é identificado como incorreto."],
    "2_dtriage":["◆ Triagem do dado incorreto","Define qual campo precisa de correção: E-mail Principal (inválido), Telefone (sem DDD, fora do formato), ou WhatsApp (inválido/vazio)."],
   "2_dtriage_fields":["⚠️ Tipos de dado incorreto","Detalhe dos critérios de invalidade por campo:\n• E-mail: sem @, sem domínio ou vazio\n• Telefone: menos de 10 ou mais de 11 dígitos, vazio ou sem DDD\n• WhatsApp: menos de 10 ou mais de 11 dígitos ou vazio"],
-  "2_ok":     ["✅ Cadastro regularizado","O dado está correto e em conformidade."],
-  "2_log":    ["📊 Registra atualização no SAP","Atualiza o histórico do registro com: data da correção, dado anterior, dado novo e responsável pela atualização. Garante rastreabilidade."],
+    "2_dtriage_fields1":["📤 Atualização e Base","Atualiza o status de telefone, WhatsApp e e-mail como válido ou inválido; os registros inválidos serão consolidados em uma base e enviados por e-mail aos consultores."],
+  "2_notif":["📣 E-mail enviado para os consultores","Realizar a cobrança com base consolidada de e-mails com falha, devolvidos e spam, junto à base de contatos do SAP, para que o consultor valide os dados de e-mail e telefone com o cliente"],
+    "2_ok":     ["✅ Cadastro regularizado","O dado está correto e em conformidade."],
+  "2_log":    ["📊 Registra atualização","Atualiza o histórico do registro com: data da correção, dado anterior, dado novo e responsável pela atualização. Garante rastreabilidade."],
   "2_end":    ["🏁 Fim do Fluxo 2","Cadastro regularizado."]
 };
  
